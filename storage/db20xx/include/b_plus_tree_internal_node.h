@@ -33,6 +33,14 @@ class BPlusTreeInternalNode : public BPlusTreeNode {
   BPlusTreeInternalNode() = delete;
   BPlusTreeInternalNode(const BPlusTreeInternalNode &other) = delete;
 
+/**
+ * '@param' 是一种文档注释标记，用于描述函数的一个参数或多个参数。
+ * 这种文档注释标记还包括其他常用标记，如 '@return'（描述函数返回值）、
+ * '@note'（提供一些额外的注意事项）、'@warning'（指出一些潜在的风险或问题）、
+ * '@throw'（描述函数可能抛出的异常类型）等。
+ * 通常，这些文档注释标记会被文档生成工具识别，并用于生成 API 文档，以便其他开发者使用。
+*/
+
   /**
    * Writes the necessary header information to a newly created page, must be called after
    * the creation of a new page to make a valid BPlusTreeInternalNode

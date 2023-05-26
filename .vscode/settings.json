@@ -8,4 +8,8 @@
     "cmake.configureArgs": [
         "-DWITH_BOOST=${workspaceFolder}/boost"
     ],
+    "files.associations": {
+        "memory": "cpp",
+        "cstdint": "cpp"
+    },
 }

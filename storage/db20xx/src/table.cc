@@ -41,7 +41,7 @@ int Table::insert_record_from_mysql(char *mysql_record,
     Key key;
     indexes_[0]->build_key_from_mysql_record(mysql_record, key, thd_ctx);
     int ret = get_record_from_index(0, key, record, *thd_ctx, false);
-
+    
     if (ret == DB20XX_KEY_NOT_EXIST) {
       // do nothing, pass checking
     } else if (ret == DB20XX_DELETED_VERSION) {
