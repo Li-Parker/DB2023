@@ -2,7 +2,7 @@
 
 namespace db20xx
 {
-    void BPlusTreeInternalNode::Init(int max_size = INTERNAL_NODE_SIZE){
+    void BPlusTreeInternalNode::Init(int max_size){
         SetMaxSize(max_size);
     }
     auto BPlusTreeInternalNode::KeyAt(int index) const -> KeyType{
@@ -14,18 +14,21 @@ namespace db20xx
         else 
             array_[index].first = key;
     }
-    auto BPlusTreeInternalNode::ValueIndex(const ValueType &value) const -> int{
-        for (size_t i = 0; i < GetSize(); i++)
+    auto BPlusTreeInternalNode::ValueIndex(const InternalNodeValueType &value) const -> int{
+        size_t size = GetSize();
+        for (size_t i = 0; i < size; i++)
         {
             if(array_[i].second==value)
                 return i;
         }
         return -1;
     }
-    auto BPlusTreeInternalNode::ValueAt(int index) const -> ValueType{
+    auto BPlusTreeInternalNode::ValueAt(int index) const -> InternalNodeValueType{
         if (index<0)
         {
             std::cout << "Error: invalid index: "<< index << std::endl;
+            std::cout << "And the value at index = 0 is:"<< array_[0].second<<std::endl;
+            return array_[0].second;
         }
         else
         {

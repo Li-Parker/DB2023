@@ -2,7 +2,7 @@
 
 namespace db20xx
 {
-    void BPlusTreeLeafNode::Init(int max_size = LEAF_NODE_SIZE){
+    void BPlusTreeLeafNode::Init(int max_size){
         SetSize(max_size);
     }
     auto BPlusTreeLeafNode::GetNextNode() const -> BPlusTreeLeafNode*{
@@ -15,6 +15,8 @@ namespace db20xx
         if (index<0)
         {
             std::cout << "Error:invalid index: "<< index << std::endl;
+            std::cout << "And the Key at index = 0 is : "<<array_[0].first<<std::endl;
+            return array_[0].first;
         }
         else
         {

@@ -1,0 +1,47 @@
+<component name="libraryTable">
+  <library name="std_data">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_partition.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_upgrade_groupby_desc.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data80011_upgrade_groupby_desc_ci_win.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/57import.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data80021_autoextend_size.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data80019_partition_prefix_key.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/import_compression_8_0_23.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data76.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data_8021.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_fts_shared_tablespace.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_index_stats.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/fw_data_80016.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/8.0.17_cfg.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/fw_data_57.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_upgrade_default_timezone_bug.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_partition_prefix_key.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data80011_upgrade_groupby_desc_cs.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/table_encrypted_64.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/wl12261_dump.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_upgrade_innodb_4k.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/8.0.15_cfg.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/datadir_tablespace_linux.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_upgrade_trigger_order.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_enum.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_fts_nolctn.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_drop_fts.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/import2_8021.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_fts_aux.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/crc32_endianness.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_exported.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_fts_lctn.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/datadir_tablespace_windows.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data57_unknown_dir.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data_geometry_56.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data_57.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/table_encrypted_32.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/data80011_upgrade_groupby_desc_ci_mac.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/import_8021.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

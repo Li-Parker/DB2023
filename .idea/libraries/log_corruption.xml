@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="log_corruption">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption7.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption5.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption_1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption3.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption6b.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption4c.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption4a.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption4.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption6.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption4b.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption0.zip!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-test/std_data/log_corruption/log_corruption4d.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
