@@ -16,10 +16,11 @@ namespace db20xx
     }
     auto BPlusTreeInternalNode::ValueIndex(const InternalNodeValueType &value) const -> int{
         size_t size = GetSize();
-        for (size_t i = 0; i < size; i++)
+        size_t i = 0;
+        for (; i < size; i++)
         {
             if(array_[i].second==value)
-                return i;
+                return int(i);
         }
         return -1;
     }

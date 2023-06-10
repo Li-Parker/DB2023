@@ -32,7 +32,8 @@ class BPlusTreeNode {
   //删除了复制构造函数，表示该类不能被复制（复制构造函数用于从一个已有对象初始化另一个新的对象）。
   BPlusTreeNode(const BPlusTreeNode &other) = delete;
   //删除了析构函数，表示该类的对象不能被直接删除或销毁。
-  ~BPlusTreeNode() = delete;
+  //  ~BPlusTreeNode() = delete;
+  virtual ~BPlusTreeNode() {} // 确保虚函数表被正确构造
 
   /**
    * 1.auto 关键字指代函数的返回类型将由编译器自动推导得出，推导的方式是根据函数体中 return 语句返回的类型来确定函数的实际返回类型。

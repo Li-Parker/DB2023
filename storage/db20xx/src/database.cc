@@ -15,7 +15,7 @@ bool Database::check_table_existence(const std::string &table_name) {
   retval 0 success
 */
 Table* Database::create_table(const std::string &table_name, Schema &schema) {
-  if (check_table_existence(table_name) == true) {
+  if (check_table_existence(table_name)) {
     return nullptr;
   }
   Table *table = new Table(table_name, schema);
@@ -25,7 +25,7 @@ Table* Database::create_table(const std::string &table_name, Schema &schema) {
 }
 
 Table *Database::get_table(const std::string table_name) {
-  if (check_table_existence(table_name) == false)
+  if (!check_table_existence(table_name))
     return nullptr;
   else
     return tables_[table_name];

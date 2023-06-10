@@ -13,7 +13,8 @@ namespace db20xx {
 using namespace Masstree::lcdf;
 typedef Str Key;
 
-
+/**using 是 C++11 中引入的一个关键字，用来定义类型别名。
+ * */
 using KeyType = Key;
 using InternalNodeValueType = BPlusTreeNode *;
 using LeafNodeValueType = VersionChainHead *;
@@ -26,7 +27,16 @@ struct KeyInfo {
   void add_key_part(uint32_t key_part) { key_parts.push_back(key_part - 1); }
   uint32_t get_key_length() { return key_len; }
 
+  /**表示一个数据库表的 schema (或者说结构或模式)，例如表中包含哪些列、每个列的数据类型等信息。
+   * */
   Schema schema;
+  
+  /**
+   * 表示一个索引所使用的 keyparts，每个 keypart 表示索引使用的一个列的位置。
+   * 在这里，我们约定索引使用的列的位置从0 开始计数，但 MySQL 中从第一个列开始计数，
+   * 所以在 add_key_part 函数中，参数 key_part 需要从 1 开始计数。
+   * 例如，一个索引是 (col1, col2) ，则 key_parts 中存放的是 [0, 1] 。
+   * */
   std::vector<int> key_parts;
   uint32_t key_len = 0; //key length capacity
 };
@@ -54,6 +64,11 @@ public:
 };
 
 class Index {
+  /**
+   * friend class 表示将一个类（这里是 Table）声明为另一个类（这里是 Index）的友元类，即允许友元类可以访问这个类的私有成员。
+   * 在下面的代码中，friend class Table 将 Table 类声明为 Index 类的友元类，
+   * 因此 Table 类可以访问 Index 类中的私有成员变量和私有成员函数。
+   * */
   friend class Table;
 
  public:

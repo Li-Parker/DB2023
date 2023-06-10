@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DB2022.iml" filepath="$PROJECT_DIR$/.idea/DB2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MySQL.iml" filepath="$PROJECT_DIR$/.idea/MySQL.iml" />
     </modules>
   </component>
 </project>

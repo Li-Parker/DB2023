@@ -46,7 +46,7 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
   auto GetNextNode() const -> BPlusTreeLeafNode*;
   void SetNextNodeId(BPlusTreeLeafNode *next_node_id);
   auto KeyAt(int index) const -> KeyType;
-
+  auto ValueAt(int index) const -> VersionChainHead*;
   /**
    * @brief for test only return a string representing all keys in
    * this leaf node formatted as "(key1,key2,key3,...)"

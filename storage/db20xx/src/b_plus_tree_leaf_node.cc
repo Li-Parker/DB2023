@@ -33,4 +33,9 @@ namespace db20xx
             return array_[index].first;
         }
     }
+
+    auto BPlusTreeLeafNode::ValueAt(int index) const -> VersionChainHead* {
+        assert(array_[index].second!=nullptr);
+        return array_[index].second;
+    }
 }
