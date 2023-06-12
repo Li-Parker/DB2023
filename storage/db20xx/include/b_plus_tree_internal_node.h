@@ -100,10 +100,10 @@ class BPlusTreeInternalNode : public BPlusTreeNode {
 
     return kstr;
   }
-
+  bool PutNode(Key key, BPlusTreeNode* node);
  private:
   // Flexible array member for page data.
-  InteralNodeMappingType array_[0];
+  std::vector<InteralNodeMappingType> array_;
 };
 }  // namespace db20xx
 

@@ -1,4 +1,7 @@
 #include "index.h"
+#include "b_plus_tree_leaf_node.h"
+#include "b_plus_tree_internal_node.h"
+#include "b_plus_tree_header_node.h"
 #include <deque>
 
 namespace db20xx {
@@ -26,6 +29,7 @@ class BplusTreeIndex : public Index {
       @retval2 false: key doesnot exist
   */
   bool get([[maybe_unused]] const Key &key, [[maybe_unused]] VersionChainHead *&vchain_head) const override;
+  static bool insert_in_leaf(BPlusTreeLeafNode* leaf_node,Key key,VersionChainHead* value);
 
   /**
   @brief
@@ -72,7 +76,8 @@ class BplusTreeIndex : public Index {
   }
 
  private:
-  BPlusTreeNode * root;
+  BPlusTreeHeaderNode* root;
+//  BPlusTreeNode * root;
   //TODO:
 };
 }

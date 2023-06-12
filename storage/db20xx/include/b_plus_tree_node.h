@@ -11,7 +11,7 @@ INVALID_INDEX_NODE：无效的索引节点，值为 0
 LEAF_NODE：叶子节点
 INTERNAL_NODE：内部节点
 */
-enum class IndexNodeType { INVALID_INDEX_NODE = 0, LEAF_NODE, INTERNAL_NODE };
+enum class IndexNodeType { INVALID_INDEX_NODE = 0, LEAF_NODE, INTERNAL_NODE ,ROOT_NODE};
 
 /**
  * Both internal and leaf node are inherited from this node.
@@ -28,7 +28,8 @@ class BPlusTreeNode {
  public:
   // Delete all constructor / destructor to ensure memory safety
   //删除了默认构造函数，表示该类必须使用自定义的构造函数来创建对象。
-  BPlusTreeNode() = delete; 
+//  BPlusTreeNode() = delete;
+  BPlusTreeNode(IndexNodeType node_type, int max_size, int size);
   //删除了复制构造函数，表示该类不能被复制（复制构造函数用于从一个已有对象初始化另一个新的对象）。
   BPlusTreeNode(const BPlusTreeNode &other) = delete;
   //删除了析构函数，表示该类的对象不能被直接删除或销毁。

@@ -34,7 +34,10 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
   // Delete all constructor / destructor to ensure memory safety
   BPlusTreeLeafNode() = delete;
   BPlusTreeLeafNode(const BPlusTreeLeafNode &other) = delete;
+  BPlusTreeLeafNode(IndexNodeType node_type, int max_size, int size, BPlusTreeLeafNode* next_node);
 
+  // 定义析构函数
+//  virtual ~BPlusTreeLeafNode() {}
   /**
    * After creating a new leaf node from buffer pool, must call initialize
    * method to set default values
@@ -47,6 +50,7 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
   void SetNextNodeId(BPlusTreeLeafNode *next_node_id);
   auto KeyAt(int index) const -> KeyType;
   auto ValueAt(int index) const -> VersionChainHead*;
+  bool PutNode(Key key, VersionChainHead* value);
   /**
    * @brief for test only return a string representing all keys in
    * this leaf node formatted as "(key1,key2,key3,...)"
@@ -75,7 +79,9 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
  private:
   BPlusTreeLeafNode *next_node_;
   // Flexible array member for node data.
-  LeafNodeMappingType array_[0];
+
+  std::vector<LeafNodeMappingType> array_;
+//  LeafNodeMappingType array_[0];
 };
 }  // namespace db20xx
 

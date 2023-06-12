@@ -25,18 +25,13 @@ namespace db20xx
         return -1;
     }
     auto BPlusTreeInternalNode::ValueAt(int index) const -> InternalNodeValueType{
-        if (index<0)
-        {
-            std::cout << "Error: invalid index: "<< index << std::endl;
-            std::cout << "And the value at index = 0 is:"<< array_[0].second<<std::endl;
-            return array_[0].second;
-        }
-        else
-        {
-            return array_[index].second;
-        }
+        assert(index>=0);
+        return array_[index].second;
     }
+    bool BPlusTreeInternalNode::PutNode(db20xx::Key key, db20xx::BPlusTreeNode *node) {
 
+        return false;
+    }
 
 
     

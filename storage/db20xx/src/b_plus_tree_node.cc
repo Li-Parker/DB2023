@@ -10,6 +10,12 @@ namespace db20xx {
  * Helper methods to get/set node type
  * Node type enum class is defined in b_plus_tree_node.h
  */
+BPlusTreeNode::BPlusTreeNode(db20xx::IndexNodeType node_type, int max_size, int size) {
+  node_type_ = node_type;
+  max_size_ = max_size;
+  size_ = size;
+}
+
 auto BPlusTreeNode::IsLeafNode() const -> bool {
     return  node_type_ == IndexNodeType::LEAF_NODE;
     }
@@ -35,7 +41,12 @@ void BPlusTreeNode::SetMaxSize(int size) { max_size_ = size;}
  * Helper method to get min node size
  * Generally, min node size == max node size / 2
  */
-auto BPlusTreeNode::GetMinSize() const -> int { return max_size_/2; }
+auto BPlusTreeNode::GetMinSize() const -> int {
+    if(node_type_ == IndexNodeType::LEAF_NODE)
+      return max_size_/2;
+    else
+      return (max_size_+1)/2;
+}
 
 }  // namespace db20xx
 
