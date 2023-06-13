@@ -51,6 +51,7 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
   auto KeyAt(int index) const -> KeyType;
   auto ValueAt(int index) const -> VersionChainHead*;
   bool PutNode(Key key, VersionChainHead* value);
+  void PopNode();
   /**
    * @brief for test only return a string representing all keys in
    * this leaf node formatted as "(key1,key2,key3,...)"

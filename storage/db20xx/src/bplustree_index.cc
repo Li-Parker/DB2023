@@ -38,6 +38,14 @@ namespace db20xx{
   bool BplusTreeIndex::insert_in_leaf(db20xx::BPlusTreeLeafNode *leaf_node, db20xx::Key key, db20xx::VersionChainHead *value) {
     return leaf_node->PutNode(key, value);
   }
+  bool BplusTreeIndex::insert_in_parent(std::vector<BPlusTreeInternalNode *> parentList, int parent_id,
+                                        db20xx::Key key, db20xx::BPlusTreeNode *value) {
+    if(parent_id==0)//parentList为空，表明
+    {
+
+    }
+    return false;
+  }
   bool BplusTreeIndex::put(const db20xx::Key &key, db20xx::VersionChainHead *vchain_head) {
     //如果根节点为空
     if(root->root_node_==nullptr)
@@ -47,12 +55,13 @@ namespace db20xx{
       root->root_node_ = tmp_leaf;
       return true;
     }
+    std::vector<BPlusTreeInternalNode*> parentList;//记录父亲节点
     BPlusTreeNode* tmp = root->root_node_;
     while(!tmp->IsLeafNode())
     {
       int tmp_size = tmp->GetSize();
       auto *tmp_internal_node = dynamic_cast<BPlusTreeInternalNode *>(tmp);
-
+      parentList.push_back(tmp_internal_node);//父亲节点Push
       tmp = tmp_internal_node->ValueAt(0);
       for(int i = tmp_size-1;i>0;i--)
       {
@@ -65,13 +74,38 @@ namespace db20xx{
     }
     int leaf_node_size = tmp->GetSize();
     int leaf_node_max_size = tmp->GetMaxSize();
+    auto *tmp_leaf_node = dynamic_cast<BPlusTreeLeafNode *>(tmp);
     //如果叶子节点没有满
     if(leaf_node_size<leaf_node_max_size){
-      auto *tmp_leaf_node = dynamic_cast<BPlusTreeLeafNode *>(tmp);
       insert_in_leaf(tmp_leaf_node, key, vchain_head);
     }
     //如果叶子节点满了
     else{
+      //如果根节点指向了叶子节点（此时只有一层）
+      if(parentList.empty()){
+        int full_size = tmp->GetSize();
+        int right_brother_size = full_size/2;
+        auto* right_new_node = new BPlusTreeLeafNode(IndexNodeType::LEAF_NODE,LEAF_NODE_SIZE,right_brother_size, nullptr);
+        //与课本上的算法不同，这里是先分裂再插入新节点
+        // step1:分裂
+        for(int i = 0;i<right_brother_size;i++)
+          right_new_node->PutNode(tmp_leaf_node->KeyAt(full_size-right_brother_size+i),
+                                  tmp_leaf_node->ValueAt(full_size-right_brother_size+i));
+
+        for(int j = 0;j<right_brother_size;j++)
+          tmp_leaf_node->PopNode();
+        // step2:插入新节点
+        if(key>=right_new_node->KeyAt(0))
+          right_new_node->PutNode(key, vchain_head);
+        else
+          tmp_leaf_node->PutNode(key, vchain_head);
+        //生成新的根节点
+        //TODO
+//        auto * new_root = new BPlusTreeInternalNode()
+      }
+      else{
+
+      }
 
     }
     return false;

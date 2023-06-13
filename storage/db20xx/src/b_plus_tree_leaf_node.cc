@@ -56,4 +56,7 @@ namespace db20xx
         }
         return false;
     }
+    void BPlusTreeLeafNode::PopNode() {
+        array_.pop_back();
+    }
 }
