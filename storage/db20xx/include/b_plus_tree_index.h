@@ -30,7 +30,7 @@ class BplusTreeIndex : public Index {
   */
   bool get([[maybe_unused]] const Key &key, [[maybe_unused]] VersionChainHead *&vchain_head) const override;
   static bool insert_in_leaf(BPlusTreeLeafNode* leaf_node,Key key,VersionChainHead* value);
-  bool insert_in_parent(std::vector<BPlusTreeInternalNode*> parentList,int parent_id, Key key, BPlusTreeNode* value);
+  void insert_in_parent(std::vector<BPlusTreeInternalNode*> parentList,unsigned parent_id, Key key, BPlusTreeNode* left,BPlusTreeNode*right);
   /**
   @brief
     put a key-value pair to B+ tree

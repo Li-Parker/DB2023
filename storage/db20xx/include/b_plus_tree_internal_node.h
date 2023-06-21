@@ -33,7 +33,8 @@ class BPlusTreeInternalNode : public BPlusTreeNode {
 
   BPlusTreeInternalNode() = delete;
   BPlusTreeInternalNode(const BPlusTreeInternalNode &other) = delete;
-
+  BPlusTreeInternalNode(IndexNodeType node_type,int max_size);
+  BPlusTreeInternalNode(IndexNodeType node_type,int max_size,Key key,BPlusTreeNode* left_node,BPlusTreeNode* right_node);
 /**
  * '@param' 是一种文档注释标记，用于描述函数的一个参数或多个参数。
  * 这种文档注释标记还包括其他常用标记，如 '@return'（描述函数返回值）、
@@ -101,6 +102,7 @@ class BPlusTreeInternalNode : public BPlusTreeNode {
     return kstr;
   }
   bool PutNode(Key key, BPlusTreeNode* node);
+  bool PopNode();
  private:
   // Flexible array member for page data.
   std::vector<InteralNodeMappingType> array_;

@@ -47,6 +47,8 @@ auto BPlusTreeNode::GetMinSize() const -> int {
     else
       return (max_size_+1)/2;
 }
-
+bool BPlusTreeNode::IsFull() const{
+    return size_==max_size_;
+}
 }  // namespace db20xx
 

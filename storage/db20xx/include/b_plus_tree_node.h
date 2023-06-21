@@ -53,6 +53,7 @@ class BPlusTreeNode {
   auto GetMaxSize() const -> int;
   void SetMaxSize(int max_size);
   auto GetMinSize() const -> int;
+  bool IsFull() const;
 
  private:
   // member variable, attributes that both internal and leaf node share

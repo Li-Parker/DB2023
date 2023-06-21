@@ -2,6 +2,14 @@
 
 namespace db20xx
 {
+    BPlusTreeInternalNode::BPlusTreeInternalNode(db20xx::IndexNodeType node_type, int max_size)
+    :BPlusTreeNode(node_type, max_size, 0){}
+    BPlusTreeInternalNode::BPlusTreeInternalNode(db20xx::IndexNodeType node_type, int max_size,db20xx::Key key,
+                                             db20xx::BPlusTreeNode *left_node,db20xx::BPlusTreeNode *right_node)
+    :BPlusTreeNode(node_type, max_size, 2){
+      array_.emplace_back("",left_node);
+      array_.emplace_back(key, right_node);
+    }
     void BPlusTreeInternalNode::Init(int max_size){
         SetMaxSize(max_size);
     }
@@ -29,10 +37,37 @@ namespace db20xx
         return array_[index].second;
     }
     bool BPlusTreeInternalNode::PutNode(db20xx::Key key, db20xx::BPlusTreeNode *node) {
-
+        if(IsFull())
+            return false;
+        int size = GetSize();
+        if(size==0)
+        {
+            array_.emplace_back(key,node);
+            IncreaseSize(1);
+            return true;
+        }
+        int i;
+        for(i = 1;i<size;i++)
+        {
+            if(KeyAt(i)>=key)
+                break;
+        }
+        if(i==size||KeyAt(i)!=key){
+            array_.insert(array_.begin()+i,InteralNodeMappingType(key, node));
+            IncreaseSize(1);
+            return true;
+        }
         return false;
     }
-
+    bool BPlusTreeInternalNode::PopNode() {
+        if(GetSize()>0)
+        {
+            array_.pop_back();
+            IncreaseSize(-1);
+            return true;
+        }
+        return false;
+    }
 
     
 }
