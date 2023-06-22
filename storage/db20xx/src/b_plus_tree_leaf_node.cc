@@ -2,9 +2,11 @@
 
 namespace db20xx
 {
-    BPlusTreeLeafNode::BPlusTreeLeafNode(db20xx::IndexNodeType node_type, int max_size, int size, db20xx::BPlusTreeLeafNode *next_node)
-    :BPlusTreeNode(node_type, max_size, size) {
+    BPlusTreeLeafNode::BPlusTreeLeafNode(db20xx::IndexNodeType node_type, int max_size,
+                                     db20xx::BPlusTreeLeafNode *next_node,db20xx::BPlusTreeLeafNode *pre_node)
+    :BPlusTreeNode(node_type, max_size, 0) {
       next_node_ = next_node;
+      pre_node_ = pre_node;
     }
     void BPlusTreeLeafNode::Init(int max_size){
       SetMaxSize(max_size);
@@ -14,6 +16,12 @@ namespace db20xx
     }
     void BPlusTreeLeafNode::SetNextNodeId(BPlusTreeLeafNode *next_node_id){
         next_node_ = next_node_id;
+    }
+    auto BPlusTreeLeafNode::GetPreNode() const -> BPlusTreeLeafNode * {
+        return pre_node_;
+    }
+    void BPlusTreeLeafNode::SetPreNodeId(db20xx::BPlusTreeLeafNode *pre_node_id) {
+        pre_node_ = pre_node_id;
     }
     auto BPlusTreeLeafNode::KeyAt(int index) const -> KeyType{
         assert(array_[index].first);
@@ -56,7 +64,31 @@ namespace db20xx
         }
         return false;
     }
-    void BPlusTreeLeafNode::PopNode() {
+    bool BPlusTreeLeafNode::RemoveNode(db20xx::Key key) {
+        int size = GetSize();
+        int i;
+        for(i = 0;i<size;i++)
+        {
+          if(array_[i].first==key)
+          {
+            array_.erase(std::next(array_.begin(), i));
+            IncreaseSize(-1);
+            return true;
+          }
+        }
+        return false;
+    }
+    bool BPlusTreeLeafNode::RemoveNodeByIndex(int index) {
+        if(index>=GetSize())
+          return false;
+        array_.erase(std::next(array_.begin(), index));
+        return true;
+    }
+    bool BPlusTreeLeafNode::PopNode() {
+        if(GetSize()==0)
+          return false;
         array_.pop_back();
+        IncreaseSize(-1);
+        return true;
     }
 }

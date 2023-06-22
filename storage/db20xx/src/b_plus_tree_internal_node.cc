@@ -59,14 +59,31 @@ namespace db20xx
         }
         return false;
     }
-    bool BPlusTreeInternalNode::PopNode() {
-        if(GetSize()>0)
+    bool BPlusTreeInternalNode::RemoveNode(db20xx::Key key) {
+        int size = GetSize();
+        int i;
+        for(i = 1;i<size;i++)
         {
-            array_.pop_back();
-            IncreaseSize(-1);
-            return true;
+            if(array_[i].first == key){
+                array_.erase(std::next(array_.begin(), i));
+                IncreaseSize(-1);
+                return true;
+            }
         }
         return false;
+    }
+    bool BPlusTreeInternalNode::RemoveNodeByIndex(int index) {
+        if(index>=GetSize())
+            return false;
+        array_.erase(std::next(array_.begin(), index));
+        IncreaseSize(-1);
+        return true;
+    }
+    bool BPlusTreeInternalNode::PopNode() {
+        if (GetSize() == 0) return false;
+        array_.pop_back();
+        IncreaseSize(-1);
+        return true;
     }
 
     

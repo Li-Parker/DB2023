@@ -34,7 +34,8 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
   // Delete all constructor / destructor to ensure memory safety
   BPlusTreeLeafNode() = delete;
   BPlusTreeLeafNode(const BPlusTreeLeafNode &other) = delete;
-  BPlusTreeLeafNode(IndexNodeType node_type, int max_size, int size, BPlusTreeLeafNode* next_node);
+  BPlusTreeLeafNode(IndexNodeType node_type, int max_size,
+                    BPlusTreeLeafNode* next_node,BPlusTreeLeafNode *pre_node);
 
   // 定义析构函数
 //  virtual ~BPlusTreeLeafNode() {}
@@ -48,10 +49,14 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
   // helper methods
   auto GetNextNode() const -> BPlusTreeLeafNode*;
   void SetNextNodeId(BPlusTreeLeafNode *next_node_id);
+  auto GetPreNode() const -> BPlusTreeLeafNode*;
+  void SetPreNodeId(BPlusTreeLeafNode *pre_node_id);
   auto KeyAt(int index) const -> KeyType;
   auto ValueAt(int index) const -> VersionChainHead*;
   bool PutNode(Key key, VersionChainHead* value);
-  void PopNode();
+  bool RemoveNode(Key key);
+  bool RemoveNodeByIndex(int index);
+  bool PopNode();
   /**
    * @brief for test only return a string representing all keys in
    * this leaf node formatted as "(key1,key2,key3,...)"
@@ -79,6 +84,7 @@ class BPlusTreeLeafNode : public BPlusTreeNode {
 
  private:
   BPlusTreeLeafNode *next_node_;
+  BPlusTreeLeafNode *pre_node_;
   // Flexible array member for node data.
 
   std::vector<LeafNodeMappingType> array_;

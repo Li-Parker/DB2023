@@ -102,6 +102,8 @@ class BPlusTreeInternalNode : public BPlusTreeNode {
     return kstr;
   }
   bool PutNode(Key key, BPlusTreeNode* node);
+  bool RemoveNode(Key key);
+  bool RemoveNodeByIndex(int index);
   bool PopNode();
  private:
   // Flexible array member for page data.

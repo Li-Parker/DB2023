@@ -28,6 +28,7 @@ class BplusTreeIndex : public Index {
       @retval1 true: key exists
       @retval2 false: key doesnot exist
   */
+  static bool get_internal_next_child(BPlusTreeNode* current,const Key key,BPlusTreeNode*&next_child) ;
   bool get([[maybe_unused]] const Key &key, [[maybe_unused]] VersionChainHead *&vchain_head) const override;
   static bool insert_in_leaf(BPlusTreeLeafNode* leaf_node,Key key,VersionChainHead* value);
   void insert_in_parent(std::vector<BPlusTreeInternalNode*> parentList,unsigned parent_id, Key key, BPlusTreeNode* left,BPlusTreeNode*right);
@@ -43,11 +44,8 @@ class BplusTreeIndex : public Index {
   bool put([[maybe_unused]] const Key &key, [[maybe_unused]] VersionChainHead *vchain_head) override;
 
   /** @remove a <key,value> pair from b+ tree */
-  bool remove([[maybe_unused]] const Key &key) override {
-    //TODO
-    return false;
-  }
-
+  bool remove([[maybe_unused]] const Key &key) override;
+  bool remove_internal_entry(BPlusTreeInternalNode*node,Key key,int parent_index,std::vector<BPlusTreeInternalNode *> parentList,std::vector<int> parentList_id);
   /** @Given a key, locate to the first tuple greater or equal to key, depending on emit_firstkey.
    * And save the scan state into ScanIterator */
   bool scan_range_first([[maybe_unused]] const Key &key, [[maybe_unused]] VersionChainHead *&vchain_head,
