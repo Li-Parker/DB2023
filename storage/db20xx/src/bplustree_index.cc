@@ -188,7 +188,6 @@ namespace db20xx{
           left_brother->SetNextNodeId(tmp_leaf_cur->GetNextNode());
           if(tmp_leaf_cur->GetNextNode()!= nullptr)
             tmp_leaf_cur->GetNextNode()->SetPreNodeId(left_brother);
-         // TODO remove_entry()
           delete tmp_leaf_cur;
           return remove_internal_entry(tmp_leaf_cur_parent,tmp_leaf_cur_parent->KeyAt(parentList_id[parentList_size-1]),
                                        parentList_size-2,parentList,parentList_id);
